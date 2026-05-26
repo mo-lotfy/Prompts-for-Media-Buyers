@@ -2,9 +2,11 @@ import { createClient } from '@supabase/supabase-js';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
+const DRY_RUN = process.argv.includes('--dry-run');
+
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://zwwcezmpzhwyufrlmaiz.supabase.co';
 const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY;
-const OUTPUT_BASE = 'prompts/uncategorized';
+const OUTPUT_BASE = '_staging/from-supabase';
 
 if (!SUPABASE_KEY) {
   console.error('Set SUPABASE_ANON_KEY in your environment');
@@ -32,15 +34,22 @@ function toFrontmatter(obj) {
 }
 
 async function seed() {
+  if (DRY_RUN) {
+    console.log('[dry-run] No files will be written.\n');
+  }
+
   const { data: episodes, error } = await supabase
     .from('episodes')
     .select('episode_number, title, reviewed');
 
   if (error) throw error;
 
-  await mkdir(OUTPUT_BASE, { recursive: true });
+  if (!DRY_RUN) {
+    await mkdir(OUTPUT_BASE, { recursive: true });
+  }
 
   const seen = new Map();
+  let skippedDupes = 0;
 
   for (const ep of episodes) {
     const paragraphs = ep.reviewed || [];
@@ -49,7 +58,10 @@ async function seed() {
 
       const id = slugify(p.prompt.label);
       if (!id) continue;
-      if (seen.has(id)) continue;
+      if (seen.has(id)) {
+        skippedDupes++;
+        continue;
+      }
       seen.set(id, id);
 
       const md = [
@@ -67,19 +79,31 @@ async function seed() {
       ].join('\n');
 
       const path = join(OUTPUT_BASE, `${id}.md`);
-      await writeFile(path, md, 'utf-8');
-      console.log(`✓ ${path}`);
+      if (DRY_RUN) {
+        console.log(`[dry-run] would write ${path} (episode ${ep.episode_number}, body ${p.prompt.body.length} chars)`);
+      } else {
+        await writeFile(path, md, 'utf-8');
+        console.log(`✓ ${path}`);
+      }
     }
   }
 
-  console.log(`\nSeeded ${seen.size} unique prompts.`);
+  const verb = DRY_RUN ? 'Would seed' : 'Seeded';
+  console.log(`\n${verb} ${seen.size} unique prompts (${skippedDupes} duplicates skipped).`);
+
+  if (DRY_RUN) {
+    console.log(`\nRe-run without --dry-run to write files to ${OUTPUT_BASE}/`);
+    return;
+  }
+
+  console.log(`\nFiles landed in ${OUTPUT_BASE}/ (gitignored — not committed).`);
   console.log(`\nNext steps (manual):`);
   console.log(`  1. Review each file in ${OUTPUT_BASE}/`);
   console.log(`  2. Edit display_name_ar to a clean Arabic name`);
-  console.log(`  3. Move each file to its correct category directory`);
-  console.log(`  4. Delete the empty ${OUTPUT_BASE}/ directory when done`);
-  console.log(`  5. Replace one placeholder in each prompt body with [SELECTED_TEXT]`);
-  console.log(`  6. Add 'uncategorized' to categories.yaml temporarily so build doesn't fail until you finish`);
+  console.log(`  3. Move each file into its correct prompts/<category>/ directory`);
+  console.log(`  4. Update each file's frontmatter "category:" to match its new directory`);
+  console.log(`  5. Replace the relevant placeholder in the body with [SELECTED_TEXT]`);
+  console.log(`  6. Open a PR with the reorganized prompts`);
 }
 
 seed().catch((err) => {

@@ -7,3 +7,6 @@ node_modules/
 
 # dist is generated; committed to main only via deploy, not in PRs
 dist/
+
+# scratch space for seed output and other local-only files — never committed
+_staging/
