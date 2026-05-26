@@ -45,3 +45,9 @@
   display_name_en: Strategy
   icon: Target
   sort_order: 8
+
+- slug: uncategorized
+  display_name_ar: غير مصنف
+  display_name_en: Uncategorized
+  icon: HelpCircle
+  sort_order: 99
