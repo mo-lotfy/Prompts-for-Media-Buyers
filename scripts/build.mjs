@@ -11,12 +11,16 @@ const OUTPUT_DIR = join(ROOT, 'dist', 'v1');
 const OUTPUT_FILE = join(OUTPUT_DIR, 'prompts.json');
 
 const promptSchema = z.object({
-  id: z.string().regex(/^[a-z0-9-]+$/, 'id must be kebab-case'),
+  id: z.string().min(1),
   display_name_ar: z.string().min(1),
   display_name_en: z.string().optional(),
   category: z.string(),
   source_episode: z.number().optional(),
   contributors: z.array(z.string()).optional(),
+  version: z.number().optional(),
+  episode_uses: z.array(z.number()).optional(),
+  placeholder_marker: z.string().nullable().optional(),
+  example_input: z.string().nullable().optional(),
 });
 
 const categorySchema = z.object({
@@ -49,7 +53,9 @@ async function loadPrompts() {
       const { data, content: body } = matter(content);
 
       const expectedId = file.replace(/\.md$/, '');
-      if (data.id !== expectedId) {
+      // Normalize to NFC: macOS can hand back decomposed (NFD) filenames for
+      // Arabic, while the frontmatter id is composed (NFC).
+      if (String(data.id).normalize('NFC') !== expectedId.normalize('NFC')) {
         throw new Error(`${fullPath}: frontmatter id "${data.id}" must match filename "${expectedId}"`);
       }
 

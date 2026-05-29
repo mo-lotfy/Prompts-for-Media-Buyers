@@ -10,7 +10,7 @@
   icon: PenTool
   sort_order: 2
 
-- slug: audience-research
+- slug: audience
   display_name_ar: تحليل الجمهور
   display_name_en: Audience Research
   icon: Users
@@ -46,8 +46,8 @@
   icon: Target
   sort_order: 8
 
-- slug: uncategorized
-  display_name_ar: غير مصنف
-  display_name_en: Uncategorized
-  icon: HelpCircle
-  sort_order: 99
+- slug: claude-setup
+  display_name_ar: إعداد Claude
+  display_name_en: Claude Setup
+  icon: Settings
+  sort_order: 9
