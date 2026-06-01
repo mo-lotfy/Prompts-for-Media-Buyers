@@ -1,4 +1,5 @@
-import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readdir, readFile, writeFile, mkdir, cp } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
 import yaml from 'yaml';
@@ -74,6 +75,17 @@ async function loadPrompts() {
   return prompts;
 }
 
+async function copyStaticAssets() {
+  const staticDirs = ['images', 'public'];
+  for (const dir of staticDirs) {
+    const src = join(ROOT, dir);
+    if (!existsSync(src)) continue;
+    const dest = join(ROOT, 'dist', dir);
+    await cp(src, dest, { recursive: true });
+    console.log(`✓ Copied ${dir}/ → dist/${dir}/`);
+  }
+}
+
 async function build() {
   console.log('Building prompts.json...');
   const categories = await loadCategories();
@@ -104,6 +116,8 @@ async function build() {
   await mkdir(OUTPUT_DIR, { recursive: true });
   await writeFile(OUTPUT_FILE, JSON.stringify(output, null, 2), 'utf-8');
   console.log(`✓ Wrote ${prompts.length} prompts in ${categories.length} categories to ${OUTPUT_FILE}`);
+
+  await copyStaticAssets();
 }
 
 build().catch((err) => {
