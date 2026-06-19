@@ -139,14 +139,14 @@ Node 20+ required. No bundler, no TypeScript, no test framework — intentionall
 
 ## Deployment
 
-Hosted on Cloudflare Pages using the GitHub integration:
+The CDN at `https://prompts-for-media-buyers.lotfy.ai` is a **Cloudflare Workers project with Static Assets**, connected to this GitHub repo's `main` branch.
 
 - **Build command:** `npm run build`
-- **Build output directory:** `dist`
-- **Trigger:** every push to `main`
-- **Public URL:** [`https://prompts-for-media-buyers.lotfy.ai/v1/prompts.json`](https://prompts-for-media-buyers.lotfy.ai/v1/prompts.json)
+- **Deploy command:** `npx wrangler deploy`
+- **Static assets directory:** `./dist` (configured in `wrangler.toml`)
+- **Custom domain:** `prompts-for-media-buyers.lotfy.ai`
 
-Cloudflare's edge CDN caches the JSON globally with sub-100ms response times. No setup needed for contributors — open a PR, merge, the CDN reflects it within ~30 seconds.
+`wrangler.toml` is **required** for deploys to succeed. Do not delete it.
 
 ## License
 
