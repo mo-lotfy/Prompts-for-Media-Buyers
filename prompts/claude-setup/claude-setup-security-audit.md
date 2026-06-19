@@ -8,7 +8,7 @@ source_episode: 42
 episode_uses: [42]
 contributors:
   - lotfy
-placeholder_marker: "[الصق الـ inventory هنا — لكل عنصر اكتب: الاسم، النوع، الـ Access، آخر استخدام، بيوصل لإيه عندي]"
+placeholder_marker: "[الصق الـ inventory هنا]"
 example_input: |
   - Google Drive Connector — Read + Write — آخر استخدام: آخر أسبوع — بيوصل لـ: ملفات briefs العملاء، spreadsheet weekly reports.
   - Asana Connector — Read + Write — آخر استخدام: آخر شهر — بيوصل لـ: task lists لكامبينات نظافة بلس و Tech Talents EG.
@@ -25,15 +25,17 @@ example_input: |
   
 ---
 
-دي قائمة كاملة بكل الـ Connectors والـ Skills اللي ربطتها بـ Claude:
-"""
-[الصق الـ inventory هنا — لكل عنصر اكتب:
+دي قائمة كاملة بكل الـ Connectors والـ Skills اللي ربطتها بـ Claude. لكل عنصر اكتب:
 - الاسم: (مثال: Google Drive, Notion, Asana, Gmail...)
 - النوع: Connector / Skill
 - الـ Access: Read فقط / Read + Write / مش متأكد
 - آخر استخدام: آخر أسبوع / آخر شهر / آخر ٣ شهور / مش فاكر
-- بيوصل لإيه عندي: (مثال: ملفات شخصية، شغل عميل X، إيميلات شركة، database عملاء)]
+- بيوصل لإيه عندي: (مثال: ملفات شخصية، شغل عميل X، إيميلات شركة، database عملاء)
+
 لو فيه أي حاجة مفعلة ومش فاكرها، اكتبها برضو حتى لو ناقصة معلومات.
+
+"""
+[الصق الـ inventory هنا]
 """
 عايزك تعمل audit أمني للـ setup ده بالخطوات دي:
 ## ١. قواعد التصنيف (طبّقها قبل ما تبدأ)

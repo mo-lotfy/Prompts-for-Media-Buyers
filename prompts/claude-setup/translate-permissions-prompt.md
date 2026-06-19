@@ -8,7 +8,7 @@ source_episode:
 episode_uses: []
 contributors:
   - lotfy
-placeholder_marker: "[الصق هنا نص الـ permissions/scopes زي ما هي ظاهرة على شاشتك]"
+placeholder_marker: "[الصق هنا نص الـ permissions]"
 example_input: |
   الـ MCP: Google Drive
   
@@ -23,9 +23,10 @@ example_input: |
 
 أنا واقف على شاشة الموافقة بتاعت ربط MCP اسمه [اسم الـ MCP — مثلاً Google Drive] بـ Claude.
 
-شاشة الـ permissions طالعالي وبتطلب مني الموافقة على السطور دي بالحرف:
+شاشة الـ permissions طالعالي وبتطلب مني الموافقة على السطور دي بالحرف. الصق نص الـ permissions/scopes زي ما هي ظاهرة على شاشتك. لو بالإنجليزي زي "See and download all your Drive files" خليها زي ما هي.
+
 """
-[الصق هنا نص الـ permissions/scopes زي ما هي ظاهرة على شاشتك. لو بالإنجليزي زي "See and download all your Drive files" خليها زي ما هي.]
+[الصق هنا نص الـ permissions]
 """
 
 عايزك:

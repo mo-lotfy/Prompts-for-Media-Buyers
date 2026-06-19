@@ -8,7 +8,7 @@ source_episode: 20
 episode_uses: [20]
 contributors:
   - lotfy
-placeholder_marker: "[الصق هنا وصف الـ workflow بكلامك العادي — الخطوات اللي بـ تعملها، الـ inputs اللي بـ تاخدها، الـ output اللي بـ تطلعه، أي قرارات بـ تتاخد في النص]"
+placeholder_marker: "[الصق هنا وصف الـ workflow]"
 example_input: |
   الـ workflow:
   كل يوم اتنين الصبح، بفتح Meta Ads Manager للعميل وبشوف أداء آخر 7 أيام. بنزّل CSV فيه: ad set name, spend, purchases, CPA, CTR, CPM, frequency, ROAS لكل ad set. بمر على الـ ad sets، بدور على:
@@ -29,9 +29,10 @@ example_input: |
 
 عندي workflow بشتغل بيه بشكل متكرر، وعايز أحوله لـ Claude Skill عشان ميتعادش شرحه كل مرة.
 
-الـ workflow:
+الـ workflow بكلامك العادي — اشمل: الخطوات اللي بتعملها، الـ inputs اللي بتاخدها، الـ output اللي بتطلعه، أي قرارات بتتاخد في النص.
+
 """
-[الصق هنا وصف الـ workflow بكلامك العادي — الخطوات اللي بتعملها، الـ inputs اللي بتاخدها، الـ output اللي بتطلعه، أي قرارات بتتاخد في النص]
+[الصق هنا وصف الـ workflow]
 """
 
 مثال على تنفيذ سابق (اختياري لكن مفيد جداً):

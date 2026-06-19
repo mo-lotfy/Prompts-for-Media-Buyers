@@ -8,7 +8,7 @@ source_episode: 22
 episode_uses: [22]
 contributors:
   - lotfy
-placeholder_marker: "[الصق نص الإعلان كامل هنا — Primary Text / Headline / Description / CTA]"
+placeholder_marker: "[الصق نص الإعلان هنا]"
 example_input: |
   ## الإعلان الأصلي
   
@@ -46,7 +46,7 @@ example_input: |
 
 **نص الإعلان كامل (كل العناصر: Primary Text / Headline / Description / CTA):**
 """
-[الصق هنا]
+[الصق نص الإعلان هنا]
 """
 
 **معلومات اختيارية (لو متاحة):**

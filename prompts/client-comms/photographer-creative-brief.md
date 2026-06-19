@@ -8,7 +8,7 @@ source_episode: 24
 episode_uses: [24]
 contributors:
   - lotfy
-placeholder_marker: "[اكتب اسم المنتج، إيه بـ يعمل، الـ unique selling points، الـ price point، أي تفاصيل visual مهمة]"
+placeholder_marker: "[اكتب اسم المنتج هنا]"
 example_input: |
   [١] المنتج / الخدمة:
   "نظافة بلس" — Brand مصري لمنتجات تنظيف منزلية طبيعية. 4 خطوط: spray أرضيات/زجاج/أطباق + مسحوق غسيل. أسعار 80-220 EGP. Packaging أبيض-بستلي بـ accent بـ نباتات. معتمد ECCC، 100% طبيعي. الزجاجة 500ml أو 1L.
@@ -35,7 +35,9 @@ example_input: |
 دي معلومات الكامبين:
 
 [١] المنتج / الخدمة:
-[اكتب اسم المنتج، إيه بيعمل، الـ unique selling points، الـ price point، أي تفاصيل visual مهمة (شكله، الـ packaging، الحجم، الألوان)]
+شامل: اسم المنتج، إيه بيعمل، الـ unique selling points، الـ price point، أي تفاصيل visual مهمة (شكله، الـ packaging، الحجم، الألوان).
+
+[اكتب اسم المنتج هنا]
 
 [٢] الجمهور المستهدف:
 [سن محدد، جندر، lifestyle، اهتمامات، الأماكن اللي بيتواجدوا فيها، إيه اللي بيهمهم في حياتهم]

@@ -8,7 +8,7 @@ source_episode: 9
 episode_uses: [9]
 contributors:
   - lotfy
-placeholder_marker: "[اكتب الهدف هنا بدقة — Awareness, Leads, Sales, App Installs, Engagement. لو فيه KPI رقمي، اذكره]"
+placeholder_marker: "[اكتب الهدف هنا]"
 example_input: |
   ## الهدف من الكامبين
   Sales مباشر من الـ ad لموقع Shopify — 600 طلب في 30 يوم، CPA target = 110 EGP.
@@ -41,7 +41,9 @@ example_input: |
 دي معطيات الكامبين:
 
 ## الهدف من الكامبين
-[اكتب الهدف هنا بدقة — Awareness, Leads, Sales, App Installs, Engagement. لو فيه KPI رقمي، اذكره. مثلاً: "1000 lead بـ CPL أقل من 50 جنيه"]
+حدد الهدف بدقة — Awareness, Leads, Sales, App Installs, Engagement. لو فيه KPI رقمي، اذكره. مثلاً: "1000 lead بـ CPL أقل من 50 جنيه".
+
+[اكتب الهدف هنا]
 
 ## المنتج/الخدمة
 [وصف مختصر — إيه اللي بنبيعه، نطاق السعر، أي ميزة تنافسية]

@@ -8,7 +8,7 @@ source_episode: 26
 episode_uses: [26]
 contributors:
   - lotfy
-placeholder_marker: "[الصق هنا: نوع البزنس / المنتج + AOV / Sales cycle length / traffic sources / funnel stages / tracking / قاعدة عملاء]"
+placeholder_marker: "[الصق context الـ business هنا]"
 example_input: |
   - نوع البزنس: E-commerce
   - المنتج/الخدمة: "نظافة بلس" — منتجات تنظيف منزلية طبيعية. AOV = 320 EGP.
@@ -22,16 +22,17 @@ example_input: |
 
 إنت Media Buyer Strategist متخصص في بناء استراتيجيات retargeting متعددة الطبقات.
 
-دي معلومات البزنس:
-"""
-[الصق هنا:
+دي معلومات البزنس — اشمل:
 - نوع البزنس: E-commerce / Service / SaaS / Lead Gen / غيره
 - المنتج/الخدمة + الـ AOV (متوسط قيمة الطلب)
 - Sales cycle length: كم يوم متوسط من أول touch لحد الـ purchase
 - الـ traffic sources الشغالة دلوقتي: Meta Prospecting / TikTok / Google / Organic / إيميل / غيره
 - الـ funnel stages الموجودة: Awareness → Consideration → Decision → Purchase → Repeat
 - conversions tracking: Pixel / Conversions API / Server-side / مفيش
-- لو فيه قاعدة عملاء حاليين: تقريباً كام عميل وآخر شراء كان امتى متوسط]
+- لو فيه قاعدة عملاء حاليين: تقريباً كام عميل وآخر شراء كان امتى متوسط
+
+"""
+[الصق context الـ business هنا]
 """
 
 عايزك تبني تقسيم retargeting layers مفصل.

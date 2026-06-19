@@ -8,7 +8,7 @@ source_episode: 3
 episode_uses: [3]
 contributors:
   - lotfy
-placeholder_marker: "[الصق الـ data هنا — Ad Set name, spend, results, CPA, CTR, CPM, frequency...]"
+placeholder_marker: "[الصق الـ data هنا]"
 example_input: |
   نوع البزنس: متجر إلكتروني لمنتجات skincare طبيعية (نظافة بلس)
   هدف الكامبين: Sales (Conversions)
@@ -35,9 +35,9 @@ example_input: |
 الميزانية الإجمالية: [الرقم]
 الـ KPI الأساسي والـ target: [مثال: CPA target = 80 جنيه، أو ROAS target = 3]
 
-الـ Ad Sets والـ Performance:
+الـ Ad Sets والـ Performance — صيغة كل سطر: Ad Set name, spend, results, CPA, CTR, CPM, frequency... كل ad set في سطر:
 """
-[الصق الـ data هنا — Ad Set name, spend, results, CPA, CTR, CPM, frequency... كل ad set في سطر]
+[الصق الـ data هنا]
 """
 </context>
 
