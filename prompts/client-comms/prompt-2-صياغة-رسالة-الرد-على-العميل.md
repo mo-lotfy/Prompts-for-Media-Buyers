@@ -4,8 +4,8 @@ display_name_ar: "صياغة رسالة الرد على العميل (KPIs)"
 display_name_en: "Client KPI Reply Message"
 category: client-comms
 version: 1
-source_episode: 8
-episode_uses: [8]
+source_episode: 7
+episode_uses: [7, 8]
 contributors:
   - lotfy
 placeholder_marker: "[الصق الـ output كامل هنا]"

@@ -16,7 +16,7 @@ const promptSchema = z.object({
   display_name_ar: z.string().min(1),
   display_name_en: z.string().optional(),
   category: z.string(),
-  source_episode: z.number().optional(),
+  source_episode: z.number().nullable().optional(),
   contributors: z.array(z.string()).optional(),
   version: z.number().optional(),
   episode_uses: z.array(z.number()).optional(),
@@ -65,8 +65,14 @@ async function loadPrompts() {
         throw new Error(`${fullPath}: frontmatter category "${parsed.category}" must match directory "${cat.name}"`);
       }
 
+      // Strip null/undefined frontmatter fields so the CDN payload stays
+      // clean (e.g. an empty source_episode in markdown produces null after
+      // YAML parse — keep it out of prompts.json).
+      const cleaned = Object.fromEntries(
+        Object.entries(parsed).filter(([, v]) => v !== null && v !== undefined)
+      );
       prompts.push({
-        ...parsed,
+        ...cleaned,
         body: body.trim(),
       });
     }

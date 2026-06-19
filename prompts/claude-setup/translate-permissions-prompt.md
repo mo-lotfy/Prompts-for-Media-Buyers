@@ -4,8 +4,8 @@ display_name_ar: "ترجمة وتقييم Permissions الـ MCP"
 display_name_en: "Translate MCP Permissions"
 category: claude-setup
 version: 1
-source_episode: 28
-episode_uses: [28]
+source_episode: 
+episode_uses: []
 contributors:
   - lotfy
 placeholder_marker: "[الصق هنا نص الـ permissions/scopes زي ما هي ظاهرة على شاشتك]"

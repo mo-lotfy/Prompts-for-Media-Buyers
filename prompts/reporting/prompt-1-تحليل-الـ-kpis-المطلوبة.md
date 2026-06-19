@@ -4,8 +4,8 @@ display_name_ar: "تحليل الـ KPIs المطلوبة"
 display_name_en: "KPI Review"
 category: reporting
 version: 1
-source_episode: 8
-episode_uses: [8]
+source_episode: 7
+episode_uses: [7, 8]
 contributors:
   - lotfy
 placeholder_marker: "[الصق نص الطلب من الإيميل أو الواتساب زي ما هو]"

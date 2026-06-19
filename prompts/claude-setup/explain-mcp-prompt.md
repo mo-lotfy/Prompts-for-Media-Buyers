@@ -4,8 +4,8 @@ display_name_ar: "شرح MCP للـ Media Buyer"
 display_name_en: "Explain MCP"
 category: claude-setup
 version: 1
-source_episode: 28
-episode_uses: [28]
+source_episode: 
+episode_uses: []
 contributors:
   - lotfy
 ---
