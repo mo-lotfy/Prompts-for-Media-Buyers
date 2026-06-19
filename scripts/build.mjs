@@ -76,13 +76,19 @@ async function loadPrompts() {
 }
 
 async function copyStaticAssets() {
-  const staticDirs = ['images', 'public'];
-  for (const dir of staticDirs) {
-    const src = join(ROOT, dir);
-    if (!existsSync(src)) continue;
-    const dest = join(ROOT, 'dist', dir);
-    await cp(src, dest, { recursive: true });
-    console.log(`✓ Copied ${dir}/ → dist/${dir}/`);
+  // images/ -> dist/images/ (kept namespaced, referenced as /images/...)
+  const imagesSrc = join(ROOT, 'images');
+  if (existsSync(imagesSrc)) {
+    await cp(imagesSrc, join(ROOT, 'dist', 'images'), { recursive: true });
+    console.log(`✓ Copied images/ → dist/images/`);
+  }
+
+  // public/* -> dist/ root (standard static-site convention; e.g. public/privacy.html
+  // is served at /privacy.html, public/foo/bar.css at /foo/bar.css)
+  const publicSrc = join(ROOT, 'public');
+  if (existsSync(publicSrc)) {
+    await cp(publicSrc, join(ROOT, 'dist'), { recursive: true });
+    console.log(`✓ Copied public/* → dist/`);
   }
 }
 

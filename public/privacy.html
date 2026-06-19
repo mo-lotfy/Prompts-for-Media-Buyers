@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Lotfy's AI Prompts for Media Buyers</title>
+<style>
+  :root {
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --bg: #ffffff;
+    --link: #2563eb;
+    --border: #e5e5e5;
+    --code-bg: #f5f5f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #e5e5e5;
+      --muted: #999;
+      --bg: #0a0a0a;
+      --link: #60a5fa;
+      --border: #2a2a2a;
+      --code-bg: #1a1a1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+  h1 { font-size: 1.875rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.25rem; margin-top: 2.5rem; padding-top: 0.5rem; }
+  p, ul { margin: 0.75rem 0; }
+  ul { padding-left: 1.5rem; }
+  li { margin: 0.25rem 0; }
+  a { color: var(--link); }
+  code {
+    background: var(--code-bg);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  .meta { color: var(--muted); font-size: 0.95rem; }
+  .last-updated {
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="meta">Lotfy's AI Prompts for Media Buyers — Chrome Extension</p>
+<p class="last-updated">Last updated: June 1, 2026</p>
+
+<h2>Summary</h2>
+<p><strong>This extension collects nothing.</strong> No personal data, no analytics, no telemetry, no tracking, no account required. Your selected text is processed entirely on your device and never sent over the network.</p>
+
+<h2>1. What this extension does</h2>
+<p>Lotfy's AI Prompts for Media Buyers is a free Chrome extension that provides a curated library of Arabic-language AI prompts for media buying workflows. You can browse prompts in the popup or right-click selected text on any webpage to copy a prompt with your selection injected at the right place, ready to paste into Claude, ChatGPT, Gemini, or any other AI tool.</p>
+
+<h2>2. Information we collect</h2>
+<p><strong>None.</strong> The extension does not collect, transmit, or store any personal information. Specifically:</p>
+<ul>
+  <li>No user accounts or sign-up</li>
+  <li>No analytics or usage tracking</li>
+  <li>No third-party trackers or advertising SDKs</li>
+  <li>No collection of selected text — when you right-click selected text, the injection happens locally in your browser and is written to your clipboard. The text never leaves your device.</li>
+  <li>No collection of browsing history</li>
+  <li>No collection of IP addresses, device fingerprints, or any identifiers</li>
+</ul>
+
+<h2>3. Local storage on your device</h2>
+<p>The extension uses Chrome's <code>chrome.storage.local</code> API to cache two pieces of data on your device only:</p>
+<ul>
+  <li><strong>Prompts catalog</strong>: a copy of the public JSON file (<a href="https://prompts-for-media-buyers.lotfy.ai/v1/prompts.json">prompts-for-media-buyers.lotfy.ai/v1/prompts.json</a>) so the extension works offline after first load.</li>
+  <li><strong>Last fetch timestamp</strong>: the time when the catalog was last refreshed (used to display "Last checked" in the Options page).</li>
+</ul>
+<p>This data is stored locally on your device, is never transmitted anywhere, and is automatically removed when you uninstall the extension.</p>
+
+<h2>4. Network requests</h2>
+<p>The extension makes <strong>one type of outbound request only</strong>: a <code>GET</code> request to the public JSON catalog at:</p>
+<p><code>https://prompts-for-media-buyers.lotfy.ai/v1/prompts.json</code></p>
+<p>This file is hosted on Cloudflare and contains the same content for every user. The request happens:</p>
+<ul>
+  <li>When the extension is first installed</li>
+  <li>When Chrome starts up (to check for updates)</li>
+  <li>When you click "Refresh" in the Options page</li>
+</ul>
+<p>No request body, headers identifying you, or query parameters tied to your identity are sent — only the standard browser User-Agent header that Chrome attaches to all web requests.</p>
+
+<h2>5. Third parties</h2>
+<p>The only third party involved in serving this extension is <strong>Cloudflare</strong>, which hosts the public catalog file. Cloudflare's privacy policy is available at <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>. Cloudflare may log standard HTTP request metadata (IP, timestamp, user agent) for security and performance purposes, as any web server would. We have no access to or control over these logs.</p>
+<p>No data is shared with any other third party. The extension does not use Google Analytics, Mixpanel, Sentry, Segment, or any other analytics or telemetry service.</p>
+
+<h2>6. Permissions explained</h2>
+<p>The extension requests the following Chrome permissions:</p>
+<ul>
+  <li><strong><code>contextMenus</code></strong>: to add the "AI Prompts" item to your right-click menu.</li>
+  <li><strong><code>storage</code></strong>: to cache the prompts catalog locally on your device (Section 3).</li>
+  <li><strong><code>scripting</code></strong>: required by Chrome's Manifest V3 for the offscreen document used to write to the clipboard.</li>
+  <li><strong><code>offscreen</code></strong>: to create a hidden document that handles clipboard writes (a Manifest V3 requirement; service workers cannot access the clipboard API directly).</li>
+  <li><strong><code>host_permissions</code></strong> for <code>https://prompts-for-media-buyers.lotfy.ai/*</code>: to fetch the public catalog file. The extension does not request access to any other website.</li>
+</ul>
+
+<h2>7. Children's privacy</h2>
+<p>The extension is not directed at children under 13. We do not knowingly collect any information from children (in fact, we do not collect any information from anyone — see Section 2).</p>
+
+<h2>8. Changes to this policy</h2>
+<p>If we ever update this policy, the "Last updated" date at the top of this page will change. Any material change in data practices will also be reflected in an updated extension version. Since the extension currently collects no data, the only kind of change foreseeable is a clarification or correction.</p>
+
+<h2>9. Contact</h2>
+<p>If you have questions about this privacy policy or the extension, you can reach out via:</p>
+<ul>
+  <li>YouTube: <a href="https://www.youtube.com/@lotfyai">@lotfyai</a></li>
+  <li>Website: <a href="https://lotfy.ai">lotfy.ai</a></li>
+  <li>GitHub issues (for technical questions): <a href="https://github.com/mo-lotfy/Prompts-for-Media-Buyers/issues">Prompts-for-Media-Buyers/issues</a></li>
+</ul>
+
+<footer>
+  <p>This privacy policy applies to the Chrome extension only. The companion <a href="https://github.com/mo-lotfy/Prompts-for-Media-Buyers">Prompts library on GitHub</a> is open source under the MIT license. The <a href="https://www.youtube.com/@lotfyai">YouTube course</a> follows YouTube's own privacy policies.</p>
+</footer>
+
+</body>
+</html>
