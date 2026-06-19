@@ -65,6 +65,22 @@ async function loadPrompts() {
         throw new Error(`${fullPath}: frontmatter category "${parsed.category}" must match directory "${cat.name}"`);
       }
 
+      // The Chrome extension does literal-string template.replace(marker, ...)
+      // on the prompt body. If the YAML marker doesn't appear in the body, the
+      // user's selection gets appended at the bottom instead of replacing the
+      // placeholder. If the marker appears more than once, only the first
+      // occurrence is replaced. Both cases are silent bugs in production, so
+      // catch them at build time.
+      if (parsed.placeholder_marker) {
+        const firstAt = body.indexOf(parsed.placeholder_marker);
+        if (firstAt === -1) {
+          throw new Error(`${fullPath}: placeholder_marker not present in body`);
+        }
+        if (body.indexOf(parsed.placeholder_marker, firstAt + 1) !== -1) {
+          throw new Error(`${fullPath}: placeholder_marker appears more than once in body`);
+        }
+      }
+
       // Strip null/undefined frontmatter fields so the CDN payload stays
       // clean (e.g. an empty source_episode in markdown produces null after
       // YAML parse — keep it out of prompts.json).
